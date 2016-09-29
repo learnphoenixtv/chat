@@ -36,6 +36,9 @@ class Chat {
 
     // Set up new message handler
     this.room.on('message:new', this.renderMessage)
+    this.room.on('messages:recent', ({data: messages}) => {
+      messages.map(this.renderMessage)
+    })
 
     // Set up input handlers
     this.messageInput.addEventListener('keypress', (e) => {
